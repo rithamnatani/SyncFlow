@@ -1,0 +1,23 @@
+<main class="main">
+  <div class="content">
+    <h1>SignalR Integration</h1>
+    <p>Status: <strong>{{ signalr.connectionStatus() }}</strong></p>
+    
+    <div class="messages">
+      <h2>Messages</h2>
+      <ul>
+        @for (msg of signalr.messages(); track $index) {
+          <li>{{ msg }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</main>
+
+<router-outlet />
+
+<style>
+  .main { padding: 2rem; font-family: sans-serif; }
+  .messages { margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem; }
+  li { padding: 0.5rem; border-bottom: 1px solid #eee; }
+</style>

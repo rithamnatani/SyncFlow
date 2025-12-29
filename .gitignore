@@ -1,0 +1,42 @@
+# General
+.DS_Store
+.vscode/
+*.log
+
+# Azure Functions
+local.settings.json
+.azure/
+appsettings.json
+appsettings.Development.json
+appsettings.local.json
+
+# .NET (api)
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+
+# Python (ai-worker)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# Node/Angular (client)
+node_modules/
+dist/
+.angular/
+.sass-cache/
+connect.lock
+coverage/
+npm-debug.log
+yarn-error.log
+testem.log
+/client/src/assets/git-version.json
+
+# SWA CLI
+.swa/
