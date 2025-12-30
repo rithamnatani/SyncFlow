@@ -1,0 +1,93 @@
+export const kanbanData: Object[] = [
+    {
+        'Id': 'TASK-1',
+        'Status': 'Open',
+        'Summary': 'Analyze the new requirements gathered from the customer.',
+        'Type': 'Story',
+        'Priority': 'Low',
+        'Tags': 'Analyze,Customer',
+        'Estimate': 3.5,
+        'Assignee': 'Nancy Davloio',
+        'RankId': 1,
+        'Color': '#8b447a',
+        'ClassName': 'e-story, e-low, e-nancy-davloio'
+    },
+    {
+        'Id': 'TASK-2',
+        'Status': 'InProgress',
+        'Summary': 'Fix the issues reported in the IE browser.',
+        'Type': 'Bug',
+        'Priority': 'Release Breaker',
+        'Tags': 'IE',
+        'Estimate': 2.5,
+        'Assignee': 'Janet Leverling',
+        'RankId': 2,
+        'Color': '#E64A19',
+        'ClassName': 'e-bug, e-release, e-janet-leverling'
+    },
+    {
+        'Id': 'TASK-3',
+        'Status': 'Testing',
+        'Summary': 'Fix the issues reported by the customer.',
+        'Type': 'Bug',
+        'Priority': 'Low',
+        'Tags': 'Customer',
+        'Estimate': '3.5',
+        'Assignee': 'Steven walker',
+        'RankId': 1,
+        'Color': '#E64A19',
+        'ClassName': 'e-bug, e-low, e-steven-walker'
+    },
+    {
+        'Id': 'TASK-4',
+        'Status': 'Close',
+        'Summary': 'Arrange a web meeting with the customer to get the login page requirements.',
+        'Type': 'Others',
+        'Priority': 'Low',
+        'Tags': 'Meeting',
+        'Estimate': 2,
+        'Assignee': 'Michael Suyama',
+        'RankId': 1,
+        'Color': '#1F88E5',
+        'ClassName': 'e-others, e-low, e-michael-suyama'
+    },
+    {
+        'Id': 'TASK-5',
+        'Status': 'Validate',
+        'Summary': 'Validate new requirements',
+        'Type': 'Improvement',
+        'Priority': 'Low',
+        'Tags': 'Validation',
+        'Estimate': 1.5,
+        'Assignee': 'Robert King',
+        'RankId': 1,
+        'Color': '#673AB7',
+        'ClassName': 'e-improvement, e-low, e-robert-king'
+    },
+    {
+        'Id': 'TASK-6',
+        'Status': 'Open',
+        'Summary': 'Login page validation.',
+        'Type': 'Story',
+        'Priority': 'Low',
+        'Tags': 'Validation,Fix',
+        'Estimate': 2.5,
+        'Assignee': 'Laura Callahan',
+        'RankId': 2,
+        'Color': '#8b447a',
+        'ClassName': 'e-story, e-low, e-nancy-davloio'
+    },
+    {
+        'Id': 'TASK-7',
+        'Status': 'Testing',
+        'Summary': 'Fix the issues reported in Safari browser.',
+        'Type': 'Bug',
+        'Priority': 'Release Breaker',
+        'Tags': 'Fix,Safari',
+        'Estimate': 1.5,
+        'Assignee': 'Nancy Davloio',
+        'RankId': 2,
+        'Color': '#E64A19',
+        'ClassName': 'e-bug, e-release, e-nancy-davloio'
+    }
+];

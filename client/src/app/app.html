@@ -1,13 +1,36 @@
+<header class="header">
+  <div class="brand">SynchFlow</div>
+  <nav>
+    <a routerLink="/kanban">Kanban</a>
+  </nav>
+  <div class="auth-status">
+    @if (auth.user(); as user) {
+    <span>Welcome, {{ user.userDetails }}</span>
+    <button (click)="auth.logout()">Logout</button>
+    <div class="debug-info">
+      <small>Client: {{ user | json }}</small>
+      <hr>
+      <button (click)="auth.verifyApiAuth()">Check API Auth</button>
+      @if (auth.apiAuthResult()) {
+      <small>API: {{ auth.apiAuthResult() | json }}</small>
+      }
+    </div>
+    } @else {
+    <button (click)="auth.login()">Login with GitHub</button>
+    }
+  </div>
+</header>
+
 <main class="main">
   <div class="content">
     <h1>SignalR Integration</h1>
     <p>Status: <strong>{{ signalr.connectionStatus() }}</strong></p>
-    
+
     <div class="messages">
       <h2>Messages</h2>
       <ul>
         @for (msg of signalr.messages(); track $index) {
-          <li>{{ msg }}</li>
+        <li>{{ msg }}</li>
         }
       </ul>
     </div>
@@ -17,7 +40,54 @@
 <router-outlet />
 
 <style>
-  .main { padding: 2rem; font-family: sans-serif; }
-  .messages { margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem; }
-  li { padding: 0.5rem; border-bottom: 1px solid #eee; }
+  .main {
+    padding: 2rem;
+    font-family: sans-serif;
+  }
+
+  .messages {
+    margin-top: 2rem;
+    border-top: 1px solid #ccc;
+    padding-top: 1rem;
+  }
+
+  li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Header Styles */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .brand {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  .auth-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+
+  .debug-info {
+    position: absolute;
+    top: 4rem;
+    right: 1rem;
+    background: #eee;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
 </style>

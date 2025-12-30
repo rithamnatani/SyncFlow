@@ -1,0 +1,13 @@
+{
+    "routes": [
+        {
+            "route": "/tasks",
+            "allowedRoles": [
+                "authenticated"
+            ]
+        }
+    ],
+    "navigationFallback": {
+        "rewrite": "/index.html"
+    }
+}
