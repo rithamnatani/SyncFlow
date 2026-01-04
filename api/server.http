@@ -1,0 +1,107 @@
+### SyncFlow API - Local Testing
+### Base URL for local Azure Functions
+@baseUrl = http://localhost:7071/api
+
+### Sample IDs (replace with actual values after creating records)
+@projectId = 00000000-0000-0000-0000-000000000001
+@ticketId = 00000000-0000-0000-0000-000000000001
+@requestId = 00000000-0000-0000-0000-000000000001
+
+###############################################################################
+# REALTIME
+###############################################################################
+
+### SignalR Negotiate - Get connection info
+POST {{baseUrl}}/negotiate
+Content-Type: application/json
+
+###############################################################################
+# PROJECTS
+###############################################################################
+
+### Create Project
+POST {{baseUrl}}/projects
+Content-Type: application/json
+
+{
+    "name": "My First Kanban Board",
+    "description": "A test project for SyncFlow"
+}
+
+### Join Project (requires auth - will fail without x-ms-client-principal)
+POST {{baseUrl}}/projects/{{projectId}}/join
+Content-Type: application/json
+
+### Approve Join Request
+POST {{baseUrl}}/projects/{{projectId}}/approve/{{requestId}}
+Content-Type: application/json
+
+###############################################################################
+# TICKETS
+###############################################################################
+
+### Get Tickets for Project
+GET {{baseUrl}}/projects/{{projectId}}/tickets
+
+### Create Ticket
+POST {{baseUrl}}/projects/{{projectId}}/tickets
+Content-Type: application/json
+
+{
+    "title": "Set up project structure",
+    "description": "Create the initial folder structure and configuration files",
+    "priority": "High",
+    "type": "Task",
+    "tags": ["setup", "infrastructure"],
+    "estimate": 3
+}
+
+### Create Another Ticket (Bug)
+POST {{baseUrl}}/projects/{{projectId}}/tickets
+Content-Type: application/json
+
+{
+    "title": "Fix login redirect issue",
+    "description": "Users are not being redirected after successful login",
+    "priority": "Critical",
+    "type": "Bug",
+    "tags": ["auth", "bug"],
+    "estimate": 2,
+    "color": "#FF5733"
+}
+
+### Move Ticket to In Progress
+PUT {{baseUrl}}/tickets/{{ticketId}}/move
+Content-Type: application/json
+
+{
+    "newStatus": "InProgress",
+    "rankId": 1000
+}
+
+### Move Ticket to Done
+PUT {{baseUrl}}/tickets/{{ticketId}}/move
+Content-Type: application/json
+
+{
+    "newStatus": "Done",
+    "rankId": 2000
+}
+
+### Delete Ticket
+DELETE {{baseUrl}}/tickets/{{ticketId}}
+
+###############################################################################
+# AUTH TESTING (with mock Easy Auth header)
+###############################################################################
+
+### Create Project with Auth Header
+# The x-ms-client-principal is base64 encoded JSON: {"userId":"test-user-123","userDetails":"test@example.com"}
+POST {{baseUrl}}/projects
+Content-Type: application/json
+x-ms-client-principal: eyJ1c2VySWQiOiJ0ZXN0LXVzZXItMTIzIiwidXNlckRldGFpbHMiOiJ0ZXN0QGV4YW1wbGUuY29tIn0=
+
+{
+    "name": "Authenticated Project",
+    "description": "Created with mock auth header"
+}
